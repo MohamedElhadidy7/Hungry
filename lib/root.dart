@@ -28,7 +28,11 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: PageView(controller: controller, children: screens),
+      body: PageView(
+        controller: controller,
+        children: screens,
+        physics: NeverScrollableScrollPhysics(),
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
@@ -36,16 +40,16 @@ class _RootState extends State<Root> {
         ),
         padding: EdgeInsets.all(10),
         child: BottomNavigationBar(
-          onTap: (i){
-            setState(() =>  currentScreen=i);
+          onTap: (i) {
+            setState(() => currentScreen = i);
             controller.jumpToPage(currentScreen);
           },
           currentIndex: currentScreen,
           elevation: 0,
-          backgroundColor:Colors.transparent,
+          backgroundColor: Colors.transparent,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey.shade600,
+          unselectedItemColor: Colors.grey.shade500.withOpacity(.7),
           items: [
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home),
@@ -67,6 +71,5 @@ class _RootState extends State<Root> {
         ),
       ),
     );
-    
   }
 }
