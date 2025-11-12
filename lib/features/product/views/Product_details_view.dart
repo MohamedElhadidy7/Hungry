@@ -1,10 +1,118 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:hungry/core/Constant/app_colors.dart';
+import 'package:hungry/features/product/widgets/Spicey_slider.dart';
+import 'package:hungry/features/product/widgets/Topping_card.dart';
+import 'package:hungry/shared/Custom_button.dart';
+import 'package:hungry/shared/Custom_text.dart';
 
-class ProductDetailsView extends StatelessWidget {
+class ProductDetailsView extends StatefulWidget {
   const ProductDetailsView({super.key});
 
   @override
+  State<ProductDetailsView> createState() => _ProductDetailsViewState();
+}
+
+class _ProductDetailsViewState extends State<ProductDetailsView> {
+  double value = .7;
+  @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+
+          child: Icon(Icons.arrow_back),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SpiceySlider(
+                value: value,
+                onChanged: (v) => setState(() => value = v),
+              ),
+              Gap(50),
+              CustomText(
+                text: 'Toppings',
+                size: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              Gap(20),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(4, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: ToppingCard(
+                        imagepath: 'assets/test/tomato.png',
+                        title: 'Tomato',
+                        onadd: () {},
+                      ),
+                    );
+                  }),
+                ),
+              ),
+              Gap(50),
+              CustomText(
+                text: 'Side Options',
+                size: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              Gap(20),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(4, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: ToppingCard(
+                        imagepath: 'assets/test/tomato.png',
+                        title: 'Tomato',
+                        onadd: () {},
+                      ),
+                    );
+                  }),
+                ),
+              ),
+
+              Gap(50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        text: 'Total',
+                        size: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      CustomText(
+                        text: '\$18.9',
+                        size: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ],
+                  ),
+                  CustomButton(text: 'Add to Cart', onTap: () {}),
+                ],
+              ),
+              Gap(100),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
