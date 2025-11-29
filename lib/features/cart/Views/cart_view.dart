@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/Constant/app_colors.dart';
 import 'package:hungry/features/cart/Widgets/Cart_item.dart';
+import 'package:hungry/features/checkout/views/checkout_view.dart';
 import 'package:hungry/shared/Custom_button.dart';
 import 'package:hungry/shared/Custom_text.dart';
 
@@ -87,7 +88,19 @@ class _CartViewState extends State<CartView> {
                 ),
               ],
             ),
-            CustomButton(text: 'Checkout', onTap: () {}, width: 120),
+            CustomButton(
+              text: 'Checkout',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CheckoutView();
+                    },
+                  ),
+                );
+              },
+              width: 120,
+            ),
           ],
         ),
       ),

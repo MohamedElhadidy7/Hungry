@@ -44,19 +44,25 @@ class _CustomTextfieldState extends State<CustomTextfield> {
       obscureText: _obscureText,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: AppColors.primarycolor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: AppColors.primarycolor),
         ),
         hintText: widget.hint,
+        hintStyle: TextStyle(color: AppColors.primarycolor),
         fillColor: Colors.white,
         suffixIcon: widget.ispassword
             ? GestureDetector(
                 onTap: () {
                   _togglePassword();
                 },
-                child: Icon(Icons.remove_red_eye),
+                child: Icon(
+                  Icons.remove_red_eye,
+                  color: AppColors.primarycolor,
+                ),
               )
             : null,
         filled: true,

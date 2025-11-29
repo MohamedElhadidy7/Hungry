@@ -11,10 +11,12 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.8
+  dio: ^5.9.0
   flutter:
     sdk: flutter
   flutter_svg: ^2.2.1
   gap: ^3.0.1
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -37,6 +39,7 @@ flutter:
     - assets/logo/
     - assets/splash/
     - assets/test/
+    - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
